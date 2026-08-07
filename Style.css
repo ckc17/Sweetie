@@ -839,3 +839,24 @@ opacity:.3;
 }
 
 }
+/* ===================================
+   OPEN PHOTO
+=================================== */
+
+.memory{
+
+transform:scale(.4);
+
+opacity:0;
+
+}
+
+.open{
+
+cursor:zoom-out;
+
+box-shadow:
+
+0 40px 80px rgba(0,0,0,.45);
+
+}
