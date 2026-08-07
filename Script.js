@@ -583,3 +583,34 @@ activateMemory();
 });
 
 });
+/* =====================================
+   FINAL NOTE
+===================================== */
+
+const finalScene=document.getElementById("finalScene");
+
+let viewedPhotos=0;
+
+photos.forEach(photo=>{
+
+photo.addEventListener("click",()=>{
+
+if(photo.classList.contains("open")){
+
+viewedPhotos++;
+
+}
+
+if(viewedPhotos>=4){
+
+setTimeout(()=>{
+
+finalScene.classList.add("showFinal");
+
+},1500);
+
+}
+
+});
+
+});
