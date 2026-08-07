@@ -673,3 +673,169 @@ transform:scale(1.06);
 z-index:50;
 
 }
+/* ===============================
+   MEMORY BUNDLE
+================================ */
+
+#memoryBundle{
+
+position:absolute;
+
+left:50%;
+
+top:55%;
+
+transform:translate(-50%,-50%);
+
+opacity:0;
+
+pointer-events:none;
+
+transition:1s;
+
+}
+
+/* appears after letter */
+
+.showBundle{
+
+opacity:1 !important;
+
+pointer-events:auto !important;
+
+}
+
+/* ===============================
+   RIBBON
+================================ */
+
+#ribbon{
+
+position:absolute;
+
+left:50%;
+
+top:50%;
+
+transform:translate(-50%,-50%);
+
+width:240px;
+
+height:24px;
+
+background:#f6ead5;
+
+border-radius:30px;
+
+z-index:50;
+
+box-shadow:
+
+0 3px 10px rgba(0,0,0,.2);
+
+cursor:pointer;
+
+}
+
+#ribbon::before{
+
+content:"🎀";
+
+position:absolute;
+
+left:50%;
+
+top:50%;
+
+transform:translate(-50%,-50%);
+
+font-size:26px;
+
+}
+
+/* ===============================
+   STACK
+================================ */
+
+#photoStack{
+
+position:relative;
+
+width:260px;
+
+height:340px;
+
+}
+
+/* ===============================
+   PHOTOS
+================================ */
+
+.memory{
+
+position:absolute;
+
+width:220px;
+
+height:280px;
+
+object-fit:cover;
+
+background:white;
+
+padding:10px;
+
+border-radius:4px;
+
+left:20px;
+
+top:20px;
+
+box-shadow:
+
+0 20px 35px rgba(0,0,0,.3);
+
+transition:1s;
+
+}
+
+/* stack */
+
+.memory1{z-index:1;}
+
+.memory2{z-index:2;}
+
+.memory3{z-index:3;}
+
+.memory4{z-index:4;}
+
+
+/* ===============================
+   TAP TEXT
+================================ */
+
+#tapRibbon{
+
+text-align:center;
+
+margin-top:40px;
+
+font-size:20px;
+
+color:white;
+
+opacity:.8;
+
+animation:blink 2s infinite;
+
+}
+
+@keyframes blink{
+
+50%{
+
+opacity:.3;
+
+}
+
+}
