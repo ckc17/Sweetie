@@ -860,3 +860,210 @@ box-shadow:
 0 40px 80px rgba(0,0,0,.45);
 
 }
+/* ===================================
+   PART 4B-3
+   PREMIUM POLAROIDS
+=================================== */
+
+.memory{
+
+    border:12px solid white;
+    border-bottom:55px solid white;
+
+    background:white;
+
+    border-radius:6px;
+
+    object-fit:cover;
+
+    box-shadow:
+    0 25px 45px rgba(0,0,0,.35);
+
+    transition:
+    transform .8s cubic-bezier(.22,1.6,.35,1),
+    box-shadow .5s,
+    filter .5s,
+    opacity .5s;
+
+}
+
+/* Hover */
+
+.memory:hover{
+
+    transform:scale(1.05);
+
+    box-shadow:
+    0 40px 60px rgba(0,0,0,.45);
+
+}
+
+/* Enlarged */
+
+.memory.open{
+
+    position:fixed;
+
+    left:50%;
+
+    top:50%;
+
+    transform:
+    translate(-50%,-50%)
+    scale(1.9)
+    rotate(0deg)!important;
+
+    z-index:9999;
+
+    box-shadow:
+
+    0 50px 120px rgba(0,0,0,.55);
+
+}
+
+/* ===================================
+   DESK BLUR
+=================================== */
+
+.blurDesk{
+
+    filter:
+
+    blur(7px)
+
+    brightness(.45);
+
+    transition:.5s;
+
+}
+
+/* ===================================
+   RIBBON
+=================================== */
+
+#ribbon{
+
+    transition:1s;
+
+}
+
+#ribbon:hover{
+
+    transform:
+
+    translate(-50%,-50%)
+
+    scale(1.08);
+
+}
+
+/* ===================================
+   PHOTO LANDING
+=================================== */
+
+@keyframes bounceLanding{
+
+0%{
+
+transform:
+translateY(-350px)
+scale(.2);
+
+opacity:0;
+
+}
+
+70%{
+
+transform:
+translateY(20px)
+scale(1.05);
+
+opacity:1;
+
+}
+
+85%{
+
+transform:
+translateY(-10px);
+
+}
+
+100%{
+
+transform:
+translateY(0)
+scale(1);
+
+opacity:1;
+
+}
+
+}
+
+/* ===================================
+   GLOW
+=================================== */
+
+.memory::after{
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+border-radius:4px;
+
+pointer-events:none;
+
+background:
+
+linear-gradient(
+
+180deg,
+
+rgba(255,255,255,.18),
+
+transparent
+
+);
+
+}
+
+/* ===================================
+   END MESSAGE
+=================================== */
+
+#thankYou{
+
+position:fixed;
+
+left:50%;
+
+bottom:60px;
+
+transform:translateX(-50%);
+
+font-size:28px;
+
+font-family:'Parisienne',cursive;
+
+opacity:0;
+
+transition:1s;
+
+color:white;
+
+text-shadow:
+
+0 5px 20px rgba(255,255,255,.35);
+
+}
+
+.showThanks{
+
+opacity:1;
+
+}
