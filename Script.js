@@ -614,3 +614,42 @@ finalScene.classList.add("showFinal");
 });
 
 });
+/* ==========================
+   FINAL ENDING
+========================== */
+
+function endStory(){
+
+    music.volume = 1;
+
+    const fadeMusic = setInterval(()=>{
+
+        music.volume -= 0.02;
+
+        if(music.volume <= 0){
+
+            music.volume = 0;
+
+            clearInterval(fadeMusic);
+
+        }
+
+    },150);
+
+    setTimeout(()=>{
+
+        document
+        .getElementById("finalScene")
+        .classList.add("showFinal");
+
+    },1000);
+
+    setTimeout(()=>{
+
+        document.body.style.transition="3s";
+
+        document.body.style.background="#000";
+
+    },12000);
+
+}
