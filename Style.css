@@ -1137,3 +1137,92 @@ transform:translateY(0);
 }
 
 }
+/* ===================================
+   FINAL NOTE
+=================================== */
+
+#finalScene{
+
+position:fixed;
+
+inset:0;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+opacity:0;
+
+pointer-events:none;
+
+transition:1.5s;
+
+background:rgba(0,0,0,.45);
+
+backdrop-filter:blur(6px);
+
+z-index:999;
+
+}
+
+.showFinal{
+
+opacity:1;
+
+pointer-events:auto;
+
+}
+
+#notePaper{
+
+width:520px;
+
+background:#ffe7ef;
+
+padding:45px;
+
+border-radius:18px;
+
+box-shadow:
+
+0 30px 70px rgba(0,0,0,.35);
+
+transform:translateY(100px);
+
+transition:1.2s;
+
+}
+
+.showFinal #notePaper{
+
+transform:translateY(0);
+
+}
+
+#notePaper h2{
+
+font-family:'Parisienne',cursive;
+
+font-size:46px;
+
+text-align:center;
+
+color:#222;
+
+margin-bottom:25px;
+
+}
+
+#notePaper p{
+
+font-size:22px;
+
+line-height:2;
+
+text-align:center;
+
+color:#222;
+
+}
