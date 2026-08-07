@@ -64,9 +64,9 @@ startBtn.addEventListener("click", () => {
     intro.style.pointerEvents = "none";
 
     setTimeout(() => {
-
-        envelopeScene.style.opacity = "1";
-        envelopeScene.style.pointerEvents = "auto";
+envelopeScene.style.opacity = "1";
+envelopeScene.style.pointerEvents = "auto";
+        
 
     }, 900);
 
@@ -179,9 +179,7 @@ function finishLetter(){
 
         /* Show the photos */
 
-        photoScene.style.opacity="1";
-
-        photoScene.style.pointerEvents="auto";
+        photoScene.classList.add("showPhotos");
 
     },1800);
 
@@ -249,3 +247,155 @@ setInterval(()=>{
     0 0 ${25+Math.sin(glow)*10}px rgba(255,220,235,.45)`;
 
 },40);
+/* =====================================
+   PETALS
+===================================== */
+
+function createPetal(){
+
+    const petal = document.createElement("div");
+
+    petal.className = "petal";
+
+    petal.innerHTML = "🌸";
+
+    petal.style.left = Math.random()*100 + "vw";
+
+    petal.style.fontSize = (18+Math.random()*12)+"px";
+
+    petal.style.animationDuration = (6+Math.random()*4)+"s";
+
+    document.body.appendChild(petal);
+
+    setTimeout(()=>{
+
+        petal.remove();
+
+    },10000);
+
+}
+
+setInterval(createPetal,900);
+
+
+/* =====================================
+   SPARKLES
+===================================== */
+
+function createSparkle(){
+
+    const sparkle = document.createElement("div");
+
+    sparkle.className = "sparkle";
+
+    sparkle.innerHTML = "✨";
+
+    sparkle.style.left = Math.random()*window.innerWidth+"px";
+
+    sparkle.style.top = Math.random()*window.innerHeight+"px";
+
+    sparkle.style.fontSize = (12+Math.random()*10)+"px";
+
+    document.body.appendChild(sparkle);
+
+    setTimeout(()=>{
+
+        sparkle.remove();
+
+    },1800);
+
+}
+
+setInterval(createSparkle,700);
+
+
+/* =====================================
+   SHOOTING STAR
+===================================== */
+
+function shootingStar(){
+
+    const star = document.createElement("div");
+
+    star.className = "shootingStar";
+
+    star.style.left = Math.random()*window.innerWidth+"px";
+
+    star.style.top = Math.random()*180+"px";
+
+    document.body.appendChild(star);
+
+    setTimeout(()=>{
+
+        star.remove();
+
+    },2200);
+
+}
+
+setInterval(shootingStar,12000);
+
+
+/* =====================================
+   PHOTO APPEAR
+===================================== */
+
+const photos = document.querySelectorAll(".memory");
+
+function showPhotos(){
+
+    photos.forEach((photo,index)=>{
+
+        setTimeout(()=>{
+
+            photo.style.opacity="1";
+
+            photo.style.animation="photoDrop .8s forwards";
+
+        },index*250);
+
+    });
+
+}
+
+
+/* =====================================
+   PHOTO ZOOM
+===================================== */
+
+photos.forEach(photo=>{
+
+    photo.addEventListener("click",()=>{
+
+        if(photo.classList.contains("open")){
+
+            photo.classList.remove("open");
+
+        }
+
+        else{
+
+            photos.forEach(p=>p.classList.remove("open"));
+
+            photo.classList.add("open");
+
+        }
+
+    });
+
+});
+
+
+/* =====================================
+   SHOW PHOTOS AFTER LETTER
+===================================== */
+
+const oldFinishLetter = finishLetter;
+
+finishLetter = function(){
+
+    oldFinishLetter();
+
+    setTimeout(showPhotos,1900);
+
+};
