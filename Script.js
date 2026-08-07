@@ -302,3 +302,247 @@ function finishLetter(){
     },1500);
 
 }
+/* =====================================
+   PART 4B-1
+   RIBBON & LETTER TRANSITION
+===================================== */
+
+const memoryBundle = document.getElementById("memoryBundle");
+const ribbon = document.getElementById("ribbon");
+const tapRibbon = document.getElementById("tapRibbon");
+
+/* Show the ribbon bundle after the letter is finished */
+
+function showMemoryBundle(){
+
+    setTimeout(()=>{
+
+        memoryBundle.classList.add("showBundle");
+
+        letter.animate([
+
+            {
+                transform:"translateX(-50%) translateY(-240px)"
+            },
+
+            {
+                transform:"translateX(-50%) translateY(-255px)"
+            },
+
+            {
+                transform:"translateX(-50%) translateY(-240px)"
+            }
+
+        ],{
+
+            duration:2500
+
+        });
+
+    },1200);
+
+}
+
+/* ---------- UPDATE TYPEWRITER ---------- */
+/* Replace ONLY the write() function with this */
+
+function write(){
+
+    if(i < message.length){
+
+        letterText.innerHTML += message.charAt(i);
+
+        i++;
+
+        setTimeout(write,35);
+
+    }else{
+
+        finishLetter();
+
+    }
+
+}
+
+/* ---------- FINISH LETTER ---------- */
+
+function finishLetter(){
+
+    showMemoryBundle();
+
+}
+
+/* ---------- OPEN MEMORY BUNDLE ---------- */
+
+ribbon.addEventListener("click",()=>{
+
+    ribbon.style.transition=".8s";
+
+    ribbon.style.transform=
+    "translate(-50%,-50%) scaleX(0)";
+
+    ribbon.style.opacity="0";
+
+    tapRibbon.style.opacity="0";
+
+    /* Fold letter back inside envelope */
+
+    setTimeout(()=>{
+
+        letter.style.transition="1.2s";
+
+        letter.style.transform=
+        "translateX(-50%) translateY(-20px)";
+
+    },600);
+
+    /* Photos scatter in Part 4B-2 */
+
+    setTimeout(()=>{
+
+        scatterPhotos();
+
+    },1700);
+
+});
+/* =====================================
+   PART 4B-2
+   POLAROID SCATTER
+===================================== */
+
+const photos = document.querySelectorAll(".memory");
+
+/* Final positions */
+
+const positions = [
+
+{
+x:-260,
+y:-120,
+r:-15
+},
+
+{
+x:190,
+y:-140,
+r:12
+},
+
+{
+x:-170,
+y:110,
+r:8
+},
+
+{
+x:220,
+y:120,
+r:-10
+}
+
+];
+
+/* Scatter */
+
+function scatterPhotos(){
+
+    photos.forEach((photo,index)=>{
+
+        setTimeout(()=>{
+
+            photo.style.transition=
+            "1s cubic-bezier(.22,1.6,.35,1)";
+
+            photo.style.transform=
+
+            `translate(${positions[index].x}px,
+
+            ${positions[index].y}px)
+
+            rotate(${positions[index].r}deg)
+
+            scale(1)`;
+
+            photo.style.zIndex=index+20;
+
+        },index*450);
+
+    });
+
+}
+
+/* =====================================
+   TAP TO ENLARGE
+===================================== */
+
+photos.forEach(photo=>{
+
+    photo.addEventListener("click",()=>{
+
+        if(photo.classList.contains("open")){
+
+            closePhoto(photo);
+
+        }
+
+        else{
+
+            openPhoto(photo);
+
+        }
+
+    });
+
+});
+
+function openPhoto(photo){
+
+    photos.forEach(p=>{
+
+        if(p!==photo){
+
+            p.style.filter="blur(5px) brightness(.5)";
+
+            p.style.opacity=".45";
+
+        }
+
+    });
+
+    photo.classList.add("open");
+
+    photo.style.transition=".6s";
+
+    photo.style.transform=
+
+    "translate(0,0) scale(1.8) rotate(0deg)";
+
+    photo.style.zIndex=999;
+
+}
+
+function closePhoto(photo){
+
+    photos.forEach((p,index)=>{
+
+        p.style.filter="none";
+
+        p.style.opacity="1";
+
+    });
+
+    photo.classList.remove("open");
+
+    const pos=positions[[...photos].indexOf(photo)];
+
+    photo.style.transform=
+
+    `translate(${pos.x}px,
+
+    ${pos.y}px)
+
+    rotate(${pos.r}deg)
+
+    scale(1)`;
+
+}
