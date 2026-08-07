@@ -1067,3 +1067,73 @@ text-shadow:
 opacity:1;
 
 }
+/* ===================================
+   PHOTO FOCUS
+=================================== */
+
+.memory{
+
+transition:
+transform .8s cubic-bezier(.22,1.6,.35,1),
+filter .6s,
+opacity .6s,
+box-shadow .6s;
+
+}
+
+/* Active */
+
+.memory.active{
+
+animation:pulsePhoto 2s infinite;
+
+}
+
+@keyframes pulsePhoto{
+
+0%{
+
+box-shadow:
+0 20px 40px rgba(255,255,255,.15);
+
+}
+
+50%{
+
+box-shadow:
+0 20px 70px rgba(255,220,235,.45);
+
+}
+
+100%{
+
+box-shadow:
+0 20px 40px rgba(255,255,255,.15);
+
+}
+
+}
+
+/* Floating */
+
+@keyframes floatMemory{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-8px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
