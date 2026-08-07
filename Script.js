@@ -546,3 +546,40 @@ function closePhoto(photo){
     scale(1)`;
 
 }
+/* =====================================
+   MEMORY STORY
+===================================== */
+
+let currentMemory=0;
+
+function activateMemory(){
+
+photos.forEach(photo=>{
+
+photo.classList.remove("active");
+
+});
+
+if(currentMemory<photos.length){
+
+photos[currentMemory]
+
+.classList.add("active");
+
+}
+
+}
+
+activateMemory();
+
+photos.forEach(photo=>{
+
+photo.addEventListener("click",()=>{
+
+currentMemory++;
+
+activateMemory();
+
+});
+
+});
